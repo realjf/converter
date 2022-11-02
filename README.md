@@ -9,6 +9,7 @@ a ebook converter
 ### Required
 - libepub-dev
 - libhpdf-dev
+- libcli11-dev
 - cmake 3.20 or later
 - make 4.3 or later
 - gcc-11 or later
