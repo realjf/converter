@@ -1,0 +1,8 @@
+[
+    {
+        "name":"libhpdf-dev"
+    },
+    {
+        "name":"libepub-dev"
+    }
+]
