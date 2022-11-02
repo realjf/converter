@@ -17,4 +17,4 @@ set(CMAKE_FIND_ROOT_PATH "/usr/include/")
 # C/C++ toolchain
 
 # specify compiler flags
-set(CMAKE_CXX_FLAGS "-Wall -g -Wextra -fexceptions -fno-threadsafe-statics" CACHE STRING "Common flags for C++ compiler")
+set(CMAKE_CXX_FLAGS "-Wall -g -Wextra -fexceptions -static -fno-threadsafe-statics" CACHE STRING "Common flags for C++ compiler")

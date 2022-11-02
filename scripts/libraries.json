@@ -1,8 +1,21 @@
 [
     {
-        "name":"libhpdf-dev"
+        "name": "libhpdf-dev",
+        "commands": [
+            "sudo apt-get install -y libhpdf-dev"
+        ]
     },
     {
-        "name":"libepub-dev"
+        "name": "libepub-dev",
+        "commands": [
+            "sudo apt-get install -y libepub-dev"
+        ]
+    },
+    {
+        "name": "libcli11-dev",
+        "commands": [
+            "sudo apt-get install -y libcli11-dev",
+            "sudo ln -sf /usr/include/CLI /usr/x86_64-w64-mingw32/include/CLI"
+        ]
     }
 ]

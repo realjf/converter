@@ -28,8 +28,9 @@ cd converter
 # install python3
 sudo apt-get install python3 -y
 
-# install required
-python3 ./scripts/setup.py -f=./scripts/libraries.json
+# install required libraries
+chmod +x ./scripts/setup.py
+./scripts/setup.py -f ./scripts/libraries.json -d -b
 
 
 ```
