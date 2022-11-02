@@ -9,11 +9,6 @@ import json
 import getopt
 
 
-SRC_DIR_BASE = "src"
-
-BASE_DIR = os.getcwd()
-SRC_DIR = os.path.join(BASE_DIR, SRC_DIR_BASE)
-
 DEBUG_OUTPUT = False
 
 
@@ -97,23 +92,25 @@ def listLibraries(data):
             print(name)
 
 
+def installLibrary(name):
+    executeCommand('sudo apt-get install ' + name + " -y")
+
+
 def printOptions():
     print("--------------------------------------------------------------------------------")
-    print("Downloads external libraries, and install if necessary.")
-    print("If the --name argument is not provided, all available libraries will be")
-    print("downloaded.")
+    print("Install required libraries.")
     print("")
     print("Options:")
-    print("  --list, -l              List all available libraries")
-    print("  --file, -f              Specifies the required libraries file to be")
-    print("                          install")
-    print("  --debug-output          Enables extra debugging output")
-    print("  --break-on-first-error  Terminate script once the first error is encountered")
+    print("  --list, -l                  List all required libraries")
+    print("  --file, -f                  Specifies the required libraries file to be")
+    print("                              installed")
+    print("  --debug-output, -d          Enables extra debugging output")
+    print("  --break-on-first-error, -b  Terminate script once the first error is encountered")
     print("--------------------------------------------------------------------------------")
 
 
 def main(argv):
-    global BASE_DIR, SRC_DIR, DEBUG_OUTPUT
+    global DEBUG_OUTPUT
     global TOOL_COMMAND_PYTHON
 
     try:
@@ -130,8 +127,6 @@ def main(argv):
 
     break_on_first_error = False
 
-    base_dir_path = ""
-
     for opt, arg in opts:
         if opt in ("-h", "--help"):
             printOptions()
@@ -140,9 +135,10 @@ def main(argv):
             list_libraries = True
         if opt in ("-f", "--file"):
             opt_file = os.path.abspath(arg)
-        if opt in ("--break-on-first-error",):
+            log(opt_file)
+        if opt in ("-b", "--break-on-first-error",):
             break_on_first_error = True
-        if opt in ("--debug-output",):
+        if opt in ("-d", "--debug-output",):
             DEBUG_OUTPUT = True
 
     if platform.system() != "Windows":
@@ -153,8 +149,9 @@ def main(argv):
         TOOL_COMMAND_PYTHON = findToolCommand(
             TOOL_COMMAND_PYTHON, paths_to_search, required=True)
 
-    if base_dir_path:
-        os.chdir(base_dir_path)
+    if len(opt_file) == 0 or not os.path.exists(os.path.abspath(opt_file)):
+        log("libraries.json not found")
+        return -1
 
     # read canonical libraries data
     data = readJSONData(opt_file)
@@ -171,11 +168,6 @@ def main(argv):
         listLibraries(data)
         return 0
 
-    # create source directory
-    if not os.path.isdir(SRC_DIR):
-        log("Creating directory " + SRC_DIR)
-        os.mkdir(SRC_DIR)
-
     failed_libraries = []
 
     for library in data:
@@ -184,6 +176,13 @@ def main(argv):
         dlog("********** LIBRARY " + name + " **********")
 
         # install library
+        count = installLibrary(name)
+        if count > 0:
+            failed_libraries.append(name)
+            if break_on_first_error:
+                break
+        else:
+            log("install " + name + " success")
 
     if failed_libraries:
         log("***************************************")

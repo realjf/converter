@@ -29,7 +29,7 @@ cd converter
 sudo apt-get install python3 -y
 
 # install required
-python3 ./scripts/setup.py
+python3 ./scripts/setup.py -f=./scripts/libraries.json
 
 
 ```
