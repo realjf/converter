@@ -23,23 +23,23 @@ int main(int argc, char** argv) {
 #endif
 
     std::string input_file = "";
-    CLI::Option* opt1 = app.add_option("-f,--file", input_file, "Filename to convert");
+    CLI::Option* input_opt = app.add_option("-f,--file", input_file, "Filename to convert");
     if (opt1 != NULL) {
         if (!opt1->check(CLI::ExistingFile)) {
             return -1;
         }
     }
     std::string output = "";
-    CLI::Option* opt2 = app.add_option("-o,--output", output, "Output filename");
+    CLI::Option* output_opt = app.add_option("-o,--output", output, "The converted results output path");
     std::string input_directory = "";
-    CLI::Option* opt3 = app.add_option("-d,--dir", input_directory, "Specify a directory that contains ebook file to convert");
+    CLI::Option* input_dir_opt = app.add_option("-d,--dir", input_directory, "Specify a directory that contains ebook file to convert");
 
     Converter converter{Converter::EPUB_TO_PDF};
     std::map<std::string, Converter> converter_map{{"epub_to_pdf", Converter::EPUB_TO_PDF}};
-    CLI::Option* opt4 = app.add_option("-c,--converter", converter, "converter settings");
+    CLI::Option* converter_opt = app.add_option("-c,--converter", converter, "converter settings");
     std::function<std::string()> default_converter_func = []() { return ConverterToString(Converter::EPUB_TO_PDF); };
-    opt4->default_function(default_converter_func);
-    opt4->transform(CLI::CheckedTransformer(converter_map, CLI::ignore_case));
+    converter_opt->default_function(default_converter_func);
+    converter_opt->capture_default_str()->required()->transform(CLI::CheckedTransformer(converter_map, CLI::ignore_case));
 
     CLI11_PARSE(app, argc, argv);
 

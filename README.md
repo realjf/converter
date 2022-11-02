@@ -1,9 +1,6 @@
 # converter
 a ebook converter
 
-## Table of content
-[TOC]
-
 
 ## Installation
 
