@@ -22,8 +22,16 @@ build_win:
 	@mkdir build_win && cd build_win && cmake -DCMAKE_TOOLCHAIN_FILE=./toolchain-mingw.cmake .. && make
 	@cd ..
 
+
+test:
+	@echo 'run unit test...'
+	@rm -rf build_test
+	@mkdir build_test && cd build_test && cmake ../tests/ && make
+
+
 clean:
 	@rm -rf build
 	@rm -rf build_win
+	@rm -rf build_test
 	@rm -rf bin
 

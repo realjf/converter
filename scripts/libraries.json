@@ -19,5 +19,11 @@
             "sudo apt-get install -y libcli11-dev",
             "sudo ln -sf /usr/include/CLI /usr/x86_64-w64-mingw32/include/CLI"
         ]
+    },
+    {
+        "name": "catch2",
+        "commands": [
+            "sudo apt-get install -y catch2"
+        ]
     }
 ]

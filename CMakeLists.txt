@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(converter LANGUAGES CXX C)
+project(converter LANGUAGES CXX C VERSION 0.0.1)
 
 set(CMAKE_VERBOSE_MAKEFILE TRUE)
 set(CMAKE_CXX_STANDARD 17)

@@ -7,9 +7,12 @@ a ebook converter
 
 ## Development
 ### Required
-- libepub-dev
-- libhpdf-dev
-- libcli11-dev
+- libepub-dev [document]()
+- libhpdf-dev: [document](https://github.com/libharu/libharu/wiki/Usage-examples)
+- libcli11-dev [document](https://cliutils.github.io/CLI11/book/)
+- catch2 
+  - [document](https://github.com/catchorg/Catch2/blob/devel/docs/Readme.md#top)
+  - [tutorial](https://github.com/catchorg/Catch2/blob/devel/docs/tutorial.md#top)
 - cmake 3.20 or later
 - make 4.3 or later
 - gcc-11 or later
