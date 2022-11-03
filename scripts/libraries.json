@@ -2,13 +2,15 @@
     {
         "name": "libhpdf-dev",
         "commands": [
-            "sudo apt-get install -y libhpdf-dev"
+            "sudo apt-get install -y libhpdf-dev",
+            "sudo ln -sf /usr/include/hpdf* /usr/x86_64-w64-mingw32/include/"
         ]
     },
     {
         "name": "libepub-dev",
         "commands": [
-            "sudo apt-get install -y libepub-dev"
+            "sudo apt-get install -y libepub-dev",
+            "sudo ln -sf /usr/include/epub* /usr/x86_64-w64-mingw32/include/"
         ]
     },
     {
