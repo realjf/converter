@@ -25,5 +25,11 @@
         "commands": [
             "sudo apt-get install -y catch2"
         ]
+    },
+    {
+        "name": "libspdlog-dev",
+        "commands": [
+            "sudo apt-get install -y libspdlog-dev"
+        ]
     }
 ]
