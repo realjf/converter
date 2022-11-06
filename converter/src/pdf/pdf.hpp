@@ -1,3 +1,3 @@
-#param once
+#pragma once
 
 #include <hpdf.h>

@@ -7,14 +7,18 @@ set(CMAKE_SYSTEM_PROCESSOR amd64)
 
 # specify the cross compiler
 set(CMAKE_C_COMPILER_TARGET ${TARGET})
-set(CMAKE_C_COMPILER gcc-10)
+set(CMAKE_C_COMPILER "/usr/bin/gcc-11")
 set(CMAKE_CXX_COMPILER_TARGET ${TARGET})
-set(CMAKE_CXX_COMPILER g++-11)
+set(CMAKE_CXX_COMPILER "/usr/bin/g++-11")
 
 
 set(CMAKE_FIND_ROOT_PATH "/usr/include/")
 
+
+add_compile_definitions(C_DEBUG)
+
+
 # C/C++ toolchain
 
 # specify compiler flags
-set(CMAKE_CXX_FLAGS "-Wall -g -Wextra -fexceptions -static -fno-threadsafe-statics" CACHE STRING "Common flags for C++ compiler")
+set(CMAKE_CXX_FLAGS "-Wall -g -Wextra -fexceptions -fPIC -fno-threadsafe-statics" CACHE STRING "Common flags for C++ compiler")

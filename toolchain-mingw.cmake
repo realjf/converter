@@ -45,7 +45,7 @@ set(MY_LINK_DIR /usr/lib/gcc/${MINGW_COMPILER_PREFIX}/10-win32)
 
 # specify compiler flags
 # Warn: if set -c option, then it compile and assemble, but do not link, when make,it will show the error "linker input file unused because linking not done"  
-set(CMAKE_CXX_FLAGS "-Wall -g -fmessage-length=0 -Wextra -fexceptions -static -static-libstdc++ -static-libgcc" CACHE STRING "Common flags for C++ compiler")
+set(CMAKE_CXX_FLAGS "-Wall -g -fmessage-length=0 -Wextra -fexceptions -fPIC -static-libstdc++ -static-libgcc" CACHE STRING "Common flags for C++ compiler")
 
 
 set(CMAKE_FIND_ROOT_PATH ${MINGW_SYSROOT})
@@ -59,3 +59,6 @@ set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 # - search for headers?
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+
+
+add_compile_definitions(C_DEBUG)

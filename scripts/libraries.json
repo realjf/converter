@@ -31,5 +31,11 @@
         "commands": [
             "sudo apt-get install -y libspdlog-dev"
         ]
+    },
+    {
+        "name": "libfmt-dev",
+        "commands": [
+            "sudo apt-get install -y libfmt-dev"
+        ]
     }
 ]
