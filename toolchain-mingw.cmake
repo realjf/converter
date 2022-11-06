@@ -5,11 +5,10 @@ set(CMAKE_SYSTEM_VERSION 10)
 # set(CMAKE_SYSTEM_PROCESSOR Intel)
 
 
-set(MINGW_COMPILER_PREFIX "x86_64-w64-mingw32" CACHE STRING
-    "What compiler prefix to use for mingw")
+set(MINGW_COMPILER_PREFIX "x86_64-w64-mingw32")
 
-set(MINGW_SYSROOT "/usr/${MINGW_COMPILER_PREFIX}" CACHE STRING
-    "What sysroot to use for mingw")
+set(MINGW_SYSROOT "/usr/${MINGW_COMPILER_PREFIX}")
+
 
 find_program(CMAKE_RC_COMPILER NAMES ${MINGW_COMPILER_PREFIX}-windres)
 find_program(CMAKE_C_COMPILER NAMES ${MINGW_COMPILER_PREFIX}-gcc)
@@ -36,9 +35,9 @@ endif()
 
 # specify the cross compiler
 set(CMAKE_C_COMPILER_TARGET ${TARGET})
-set(CMAKE_C_COMPILER ${MINGW_COMPILER_PREFIX}-gcc)
+set(CMAKE_C_COMPILER "/usr/bin/${MINGW_COMPILER_PREFIX}-gcc")
 set(CMAKE_CXX_COMPILER_TARGET ${TARGET})
-set(CMAKE_CXX_COMPILER ${MINGW_COMPILER_PREFIX}-g++)
+set(CMAKE_CXX_COMPILER "/usr/bin/${MINGW_COMPILER_PREFIX}-g++")
 
 # C/C++ toolchain
 set(MY_LINK_DIR /usr/lib/gcc/${MINGW_COMPILER_PREFIX}/10-win32)
@@ -50,6 +49,9 @@ set(CMAKE_CXX_FLAGS "-Wall -g -fmessage-length=0 -Wextra -fexceptions -fPIC -sta
 
 set(CMAKE_FIND_ROOT_PATH ${MINGW_SYSROOT})
 
+# set(spdlog_DIR ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+# set(fmt_DIR ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+
 
 # adjust the default behaviour of the FIND_XXX() commands:
 # - search for build programs in the host environment?
@@ -60,5 +62,3 @@ set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 # - search for headers?
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 
-
-add_compile_definitions(C_DEBUG)

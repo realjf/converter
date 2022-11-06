@@ -4,7 +4,6 @@ project(converter LANGUAGES CXX C VERSION 0.0.1)
 
 set(CMAKE_CXX_STANDARD 17)
 
-
 find_package(spdlog REQUIRED)
 
 find_package(CLI11 2.1.2)

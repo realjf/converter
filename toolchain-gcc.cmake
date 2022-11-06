@@ -15,8 +15,6 @@ set(CMAKE_CXX_COMPILER "/usr/bin/g++-11")
 set(CMAKE_FIND_ROOT_PATH "/usr/include/")
 
 
-add_compile_definitions(C_DEBUG)
-
 
 # C/C++ toolchain
 
