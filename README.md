@@ -13,6 +13,7 @@ a ebook converter
 - catch2 (need to link)
   - [document](https://github.com/catchorg/Catch2/blob/devel/docs/Readme.md#top)
   - [tutorial](https://github.com/catchorg/Catch2/blob/devel/docs/tutorial.md#top)
+- libspdlog-dev [document](https://github.com/gabime/spdlog/wiki)
 - cmake 3.20 or later
 - make 4.3 or later
 - gcc-11 or later
